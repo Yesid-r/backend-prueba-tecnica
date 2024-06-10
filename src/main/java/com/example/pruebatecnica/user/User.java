@@ -1,5 +1,7 @@
 package com.example.pruebatecnica.user;
 
+import com.example.pruebatecnica.model.Credito;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,10 +27,14 @@ public class User implements UserDetails {
     private String firstname;
     private String lastname;
     private String email;
+    private String phone;
+    @JsonIgnore
     private String password;
 
     @Enumerated(EnumType.STRING)
     private Role role;
+    @OneToOne
+    private Credito credito;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
