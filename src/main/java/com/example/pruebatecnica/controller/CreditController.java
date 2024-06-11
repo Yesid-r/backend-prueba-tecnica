@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/credit")
+@CrossOrigin
 public class CreditController {
 
     @Autowired
@@ -47,6 +48,16 @@ public class CreditController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteCredit(@PathVariable Integer id){
+        Credito credito = creditService.findById(id);
+        if (credito!= null){
+            creditService.deleteById(id);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @GetMapping("/credits-deudor/{id}")
     public ResponseEntity findByDeudor(@PathVariable Integer id){
         Optional<User> user = userRepository.findById(id);
@@ -72,6 +83,11 @@ public class CreditController {
 
     @PostMapping("/payment")
     public ResponseEntity addPayment (@RequestBody PaymentDTO paymentDTO) {
-        return ResponseEntity.ok().build();
+        Credito credito = creditService.payment(paymentDTO);
+        if (credito != null){
+            return ResponseEntity.ok(credito);
+        }
+        return ResponseEntity.notFound().build();
+
     }
 }

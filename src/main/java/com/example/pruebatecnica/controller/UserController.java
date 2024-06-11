@@ -2,6 +2,7 @@ package com.example.pruebatecnica.controller;
 
 import com.example.pruebatecnica.config.auth.AuthenticationRequest;
 import com.example.pruebatecnica.service.UserService;
+import com.example.pruebatecnica.user.Role;
 import com.example.pruebatecnica.user.User;
 import com.example.pruebatecnica.user.UserDTO;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +23,12 @@ public class UserController {
     public ResponseEntity findAll () {
         return ResponseEntity.ok(userService.findAll());
     }
+    @GetMapping("/find-usersrole/{role}")
+    public ResponseEntity findByRole(@PathVariable String role){
+        return ResponseEntity.ok(userService.findByRole(Role.valueOf(role)));
+    }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity deleteUser(@PathVariable Integer id){
 
         User userfound = userService.findById(id);

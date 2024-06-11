@@ -1,6 +1,7 @@
 package com.example.pruebatecnica.service;
 
 import com.example.pruebatecnica.config.auth.AuthenticationRequest;
+import com.example.pruebatecnica.user.Role;
 import com.example.pruebatecnica.user.User;
 import com.example.pruebatecnica.user.UserDTO;
 import com.example.pruebatecnica.user.UserRepository;
@@ -50,5 +51,9 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(authenticationRequest.getPassword()));
 
         userRepository.save(user);
+    }
+
+    public List<User> findByRole(Role role) {
+        return userRepository.findByRole(role);
     }
 }

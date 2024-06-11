@@ -1,6 +1,7 @@
 package com.example.pruebatecnica.service;
 
 import com.example.pruebatecnica.model.Credito;
+import com.example.pruebatecnica.model.DTO.PaymentDTO;
 import com.example.pruebatecnica.model.DTO.RegisterCredit;
 import com.example.pruebatecnica.repository.CreditRepository;
 import com.example.pruebatecnica.user.User;
@@ -45,5 +46,21 @@ public class CreditService {
     public Credito findById(Integer id) {
         return creditRepository.findById(id).orElse(null);
 
+    }
+
+    public Credito payment(PaymentDTO paymentDTO) {
+        Optional<Credito> creditoOptional = creditRepository.findById(paymentDTO.getId());
+        if (creditoOptional.isPresent()){
+            Credito credito = creditoOptional.get();
+            if (paymentDTO.getAmount()<= credito.getSaldo()){
+                credito.setSaldo(credito.getSaldo()-paymentDTO.getAmount());
+                return creditRepository.save(credito);
+            }
+        }
+        return null;
+    }
+
+    public void deleteById(Integer id) {
+        creditRepository.deleteById(id);
     }
 }
