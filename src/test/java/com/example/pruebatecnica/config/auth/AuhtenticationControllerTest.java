@@ -32,12 +32,11 @@ class AuhtenticationControllerTest {
     }
 
     @Test
-    @DirtiesContext
     void authenticate() {
-        AuthenticationRequest authenticationRequest = new AuthenticationRequest("maria@gmail.com", "1234");
+        AuthenticationRequest authenticationRequest = new AuthenticationRequest("pedro.perez@example.com", "$2a$10$eA4Qb1M1tOsoDXH56W6yvOzXaIyPHaTB3Pfz1Y/wTt/7F1soGZdI2");
         ResponseEntity<AuthenticationResponse> response = restTemplate.postForEntity("/api/v1/auth/authenticate", authenticationRequest, AuthenticationResponse.class);
         System.out.println("response: " + response);
-        assertEquals("maria@gmail.com", response.getBody().getUser().getEmail());
+        assertEquals("pedro.perez@example.com", response.getBody().getUser().getEmail());
     }
 
     @Test

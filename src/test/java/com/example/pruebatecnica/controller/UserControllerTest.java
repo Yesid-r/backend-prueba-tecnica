@@ -26,7 +26,7 @@ class UserControllerTest {
         ResponseEntity<String> response = restTemplate.getForEntity("/api/v1/users", String.class);
         DocumentContext documentContext = JsonPath.parse(response.getBody());
         int usersCount = documentContext.read("$.length()");
-        assertEquals(3, usersCount);
+        assertEquals(4, usersCount);
     }
 
     @Test
@@ -55,7 +55,7 @@ class UserControllerTest {
 
 
         // Update the created user
-        Integer userId = 3;
+        Integer userId = 4;
         UserDTO updatedUser = new UserDTO("Updated", "User", "alice.smith@example.com", "312312");
         HttpEntity<UserDTO> requestEntity = new HttpEntity<>(updatedUser);
         ResponseEntity<UserDTO> updateResponse = restTemplate.exchange("/api/v1/users/" + userId, HttpMethod.PUT, requestEntity, UserDTO.class);

@@ -20,16 +20,16 @@ CREATE TABLE IF NOT EXISTS CREDITO (
 
 
 INSERT INTO _user (id, firstname, lastname, email, phone, password, role)
-VALUES (1, 'John', 'Doe', 'john.doe@example.com', '123456789', '$2a$10$2yERXj5/R5PfVLEpG34h5OVsSTUVv54VjTpdW7qO3QcZk31Q8W5SW', 'ADMIN');
+VALUES (2, 'John', 'Doe', 'john.doe@example.com', '123456789', '$2a$10$2yERXj5/R5PfVLEpG34h5OVsSTUVv54VjTpdW7qO3QcZk31Q8W5SW', 'ADMIN');
 
 INSERT INTO _user (id, firstname, lastname, email, phone, password, role)
-VALUES (2, 'Jane', 'Doe', 'jane.doe@example.com', '987654321', '$2a$10$5jYK7jxZS2i/dvPbtQewVOn6sUuRQ0i2IR9w1KXTgJ5D0TmweMNyK', 'DEUDOR');
+VALUES (3, 'Jane', 'Doe', 'jane.doe@example.com', '987654321', '$2a$10$5jYK7jxZS2i/dvPbtQewVOn6sUuRQ0i2IR9w1KXTgJ5D0TmweMNyK', 'DEUDOR');
 
 INSERT INTO _user (id, firstname, lastname, email, phone, password, role)
-VALUES (3, 'Alice', 'Smith', 'alice.smith@example.com', '456123789', '$2a$10$eA4Qb1M1tOsoDXH56W6yvOzXaIyPHaTB3Pfz1Y/wTt/7F1soGZdI2', 'COBRADOR');
+VALUES (4, 'Alice', 'Smith', 'alice.smith@example.com', '456123789', '$2a$10$eA4Qb1M1tOsoDXH56W6yvOzXaIyPHaTB3Pfz1Y/wTt/7F1soGZdI2', 'COBRADOR');
 
 INSERT INTO _user (id, firstname, lastname, email, phone, password, role)
-VALUES (4, 'Pedro', 'Perez', 'pedro.perez@example.com', '456123789', '$2a$10$eA4Qb1M1tOsoDXH56W6yvOzXaIyPHaTB3Pfz1Y/wTt/7F1soGZdI2', 'COBRADOR');
+VALUES (5, 'Pedro', 'Perez', 'pedro.perez@example.com', '456123789', '$2a$10$eA4Qb1M1tOsoDXH56W6yvOzXaIyPHaTB3Pfz1Y/wTt/7F1soGZdI2', 'COBRADOR');
 
 INSERT INTO credito (id, deudor_id, cobrador_id, saldo)
 VALUES (1, 2, 3, 1000.00);
