@@ -19,14 +19,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "_user")
+@Table(name = "_user" , uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
 public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Integer id;
     private String firstname;
     private String lastname;
+
     private String email;
+    @Column(unique = true, nullable = false)
     private String phone;
     @JsonIgnore
     private String password;

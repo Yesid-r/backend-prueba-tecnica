@@ -40,6 +40,18 @@ public class UserController {
         }
 
     }
+    @GetMapping("/{id}")
+    public ResponseEntity findUser(@PathVariable Integer id){
+
+        User userfound = userService.findById(id);
+        if (userfound != null){
+
+            return ResponseEntity.ok(userfound);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
     @PutMapping("/{id}")
     public ResponseEntity updateUser(@PathVariable Integer id, @RequestBody UserDTO userDto){
         User userFound = userService.findById(id);
