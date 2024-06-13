@@ -2,6 +2,10 @@
 # Proyecto de Gestión de Créditos
 
 Este proyecto es una aplicación web para la gestión de créditos, donde se pueden registrar, consultar y eliminar créditos, así como realizar pagos y consultar créditos por deudor o cobrador.
+- **Vista**: El consumo de esta API se encuentra en el siguiente repositorio, un proyecto creado con el framework de Angular
+     ```
+     https://github.com/Yesid-r/frontend_prueba
+     ```
 
 ## Tecnologías Utilizadas
 
